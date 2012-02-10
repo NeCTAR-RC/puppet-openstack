@@ -1,0 +1,3 @@
+# THIS FILE IS MANAGED BY PUPPET
+
+deb http://mirrors.melbourne.nectar.org.au/openstack/ubuntu lucid main
