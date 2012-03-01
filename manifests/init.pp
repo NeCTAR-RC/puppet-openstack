@@ -2,7 +2,7 @@ class openstack {
 
   file {'/etc/apt/sources.list.d/openstack-release-2011.3-lucid.list':
     ensure => file,
-    source => 'puppet:///openstack/openstack-release-2011.3-lucid.list',
+    source => 'puppet:///modules/openstack/openstack-release-2011.3-lucid.list',
     notify => Exec[apt-get-update],
   }
   
