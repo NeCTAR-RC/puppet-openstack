@@ -1,5 +1,11 @@
 class openstack {
 
+  include "openstack::${openstack_version}"
+
+}
+
+class openstack::diablo {
+  
   file {'/etc/apt/sources.list.d/openstack-release-2011.3-lucid.list':
     ensure => file,
     source => 'puppet:///modules/openstack/openstack-release-2011.3-lucid.list',
@@ -16,4 +22,8 @@ class openstack {
     notify      => Exec[apt-get-update],
   }
   
+}
+
+class openstack::essex {
+
 }
