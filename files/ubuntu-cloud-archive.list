@@ -1,4 +1,1 @@
-
-deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-updates/folsom main
-
-deb http://ubuntu-cloud.archive.canonical.com/ubuntu precise-proposed/folsom main
+deb http://mirrors.melbourne.nectar.org.au/ubuntu-cloud/ubuntu precise-updates/folsom main
