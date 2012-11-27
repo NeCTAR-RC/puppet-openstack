@@ -8,6 +8,10 @@ class openstack {
     ensure => present,
   }
 
+  @package {'python-memcache':
+    ensure => installed,
+  }
+
   package {'ubuntu-cloud-keyring':
     ensure => installed,
   }
