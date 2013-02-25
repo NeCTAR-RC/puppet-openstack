@@ -14,16 +14,12 @@ class openstack {
 
   if $lsbdistcodename == 'precise' {
 
-    package {'ubuntu-cloud-keyring':
-      ensure => installed,
-      require => Exec[apt-get-update],
-    }
-
-    file {ubuntu-cloud-archive-repo:
-      path    => '/etc/apt/sources.list.d/ubuntu-cloud-archive.list',
-      source  => 'puppet:///modules/openstack/ubuntu-cloud-archive.list',
-      #notify  => Exec[apt-get-update],
-      require => Package['ubuntu-cloud-keyring'],
+    apt::source { 'ubuntu-cloud-archive':
+      location          => 'http://mirrors.melbourne.nectar.org.au/ubuntu-cloud/ubuntu',
+      release           => 'precise-updates/folsom',
+      repos             => 'main',
+      required_packages => 'ubuntu-cloud-keyring',
+      include_src       => false,
     }
   }
 }
