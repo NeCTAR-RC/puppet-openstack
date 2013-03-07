@@ -1,0 +1,8 @@
+Change-Id: Icb82e017a9fd6de72783df0c07a99f63d6ca038d
+Code-Review+2: Sam Morrison <sam.morrison@unimelb.edu.au>
+Verified+1: Jenkins <rc-melbourne@nectar.org.au>
+Submitted-by: Sam Morrison <sam.morrison@unimelb.edu.au>
+Submitted-at: Thu, 07 Mar 2013 11:27:22 +1100
+Reviewed-on: https://review.rc.nectar.org.au/176
+Project: NeCTAR-RC/puppet-openstack
+Branch: refs/heads/production
