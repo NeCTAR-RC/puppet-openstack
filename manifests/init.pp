@@ -31,7 +31,6 @@ class openstack {
       location          => 'http://mirrors.melbourne.nectar.org.au/ubuntu-cloud/ubuntu',
       release           => 'precise-updates/folsom',
       repos             => 'main',
-      required_packages => 'ubuntu-cloud-keyring',
       include_src       => false,
     }
   }
