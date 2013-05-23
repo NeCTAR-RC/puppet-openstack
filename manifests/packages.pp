@@ -17,7 +17,7 @@ class openstack::packages {
     
     apt::source { 'ubuntu-cloud-archive':
       location          => 'http://mirrors.melbourne.nectar.org.au/ubuntu-cloud/ubuntu',
-      release           => 'precise-updates/folsom',
+      release           => "precise-updates/${openstack_version}",
       repos             => 'main',
       include_src       => false,
     }
