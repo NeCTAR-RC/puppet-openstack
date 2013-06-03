@@ -1,5 +1,7 @@
 class openstack::packages {
 
+  $openstack_version = hiera('openstack_version')
+
   if $::rfc1918_gateway == 'true' {
     exec { 'cloudarchive-apt-key':
       path    => '/usr/bin:/bin:/usr/sbin:/sbin',
