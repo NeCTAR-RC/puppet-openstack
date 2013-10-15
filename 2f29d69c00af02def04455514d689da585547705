@@ -1,0 +1,8 @@
+Change-Id: I2f29d69c00af02def04455514d689da585547705
+Code-Review+2: Russell Sim <russell.sim@gmail.com>
+Verified+1: Russell Sim <russell.sim@gmail.com>
+Submitted-by: Russell Sim <russell.sim@gmail.com>
+Submitted-at: Wed, 16 Oct 2013 09:57:01 +1100
+Reviewed-on: https://review.rc.nectar.org.au/877
+Project: NeCTAR-RC/puppet-openstack
+Branch: refs/meta/config
