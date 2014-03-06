@@ -1,14 +1,19 @@
 class openstack {
 
-  @package { 'python-keystone':
-    ensure => present,
-  }
+  anchor {'openstack::begin': }
+  anchor {'openstack::end': }
 
-  @package { 'python-mysqldb':
-    ensure => present,
-  }
+  # Set up repositories
+  class { 'openstack::repos': }
 
-  @package {'python-memcache':
-    ensure => installed,
-  }
+  # Packages
+  class { 'openstack::packages': }
+
+  # Ensure that we set up the repositories before trying to install
+  # the packages
+  Anchor['openstack::begin']
+  -> Class['openstack::repos']
+  -> Class['openstack::packages']
+  -> Anchor['openstack::end']
+
 }
