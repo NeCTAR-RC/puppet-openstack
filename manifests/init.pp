@@ -1,11 +1,11 @@
 class openstack {
 
   # Set up repositories
-  class { 'openstack::repos':
+  class { 'openstack::repo':
       stage => setup,
   }
 
   # Packages
-  class { 'openstack::packages': }
+  class { 'openstack::package': }
 
 }
