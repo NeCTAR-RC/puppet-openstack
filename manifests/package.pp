@@ -1,4 +1,4 @@
-class openstack::packages {
+class openstack::package {
 
   @package { 'python-keystone':
     ensure => present,

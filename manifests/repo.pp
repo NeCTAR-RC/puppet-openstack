@@ -1,4 +1,4 @@
-class openstack::repos {
+class openstack::repo {
 
   $openstack_version = hiera('openstack_version')
 
