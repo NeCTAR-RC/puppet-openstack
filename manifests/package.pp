@@ -4,10 +4,6 @@ class openstack::package {
     ensure => present,
   }
 
-  @package { 'python-mysqldb':
-    ensure => present,
-  }
-
   @package {'python-memcache':
     ensure => installed,
   }
