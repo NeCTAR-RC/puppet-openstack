@@ -16,6 +16,24 @@
       "revId": "e79d37c4ad8f2745697c71686907f6a51849141e",
       "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAT3//9uE\u003d",
+        "filename": "manifests/package.pp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2014-05-14T02:00:33Z",
+      "side": 1,
+      "message": "i did think of that, but do you really want every host to have the library installed on them?\n\nInstead i just replaced the realize calls in all the other modules with include mysql::python",
+      "parentUuid": "AAAAT3//9uM\u003d",
+      "revId": "e79d37c4ad8f2745697c71686907f6a51849141e",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
     }
   ]
 }
