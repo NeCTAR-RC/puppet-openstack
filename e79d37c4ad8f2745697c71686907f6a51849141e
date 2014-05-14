@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAT3//9uM\u003d",
+        "filename": "manifests/package.pp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000009
+      },
+      "writtenOn": "2014-05-14T01:01:58Z",
+      "side": 1,
+      "message": "Doesn\u0027t need to include mysql::python?",
+      "revId": "e79d37c4ad8f2745697c71686907f6a51849141e",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
