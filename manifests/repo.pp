@@ -2,7 +2,8 @@ class openstack::repo {
 
   $openstack_version = hiera('openstack_version')
 
-  if $lsbdistcodename == 'precise' {
+  # Icehouse is native to Trusty
+  if $openstack_version != 'icehouse' {
 
     if $::http_proxy and $::rfc1918_gateway == 'true' {
       $key_options = "http-proxy=${::http_proxy}"
