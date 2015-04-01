@@ -13,7 +13,7 @@ class openstack::repo {
     }
 
     apt::key { 'cloud-archive':
-      key         => 'EC4926EA',
+      key         => '391A9AA2147192839E9DB0315EDB1B62EC4926EA',
       key_server  => 'pgp.mit.edu',
       key_options => $key_options,
     }
