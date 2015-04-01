@@ -4,7 +4,9 @@ class openstack::package {
     ensure => present,
   }
 
-  @package {'python-memcache':
-    ensure => installed,
-  }
+  ensure_packages(['python-memcache'])
+  
+#  @package {'python-memcache':
+#    ensure => installed,
+#  }
 }
