@@ -1,10 +1,4 @@
+#These are needed almost everywhere
 class openstack::package {
-
-  @package { 'python-keystone':
-    ensure => present,
-  }
-
-  @package {'python-memcache':
-    ensure => installed,
-  }
+  ensure_packages(['python-keystone','python-memcache'])
 }
