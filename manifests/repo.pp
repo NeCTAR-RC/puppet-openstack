@@ -13,16 +13,17 @@ class openstack::repo {
     }
 
     apt::key { 'cloud-archive':
-      key         => '391A9AA2147192839E9DB0315EDB1B62EC4926EA',
-      key_server  => 'pgp.mit.edu',
-      key_options => $key_options,
+      id      => '391A9AA2147192839E9DB0315EDB1B62EC4926EA',
+      server  => 'pgp.mit.edu',
+      options => $key_options,
+      notify  => Exec['apt_update'],
     }
 
     apt::source { 'ubuntu-cloud-archive':
-      location          => 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
-      release           => "${lsbdistcodename}-updates/${openstack_version}",
-      repos             => 'main',
-      include_src       => false,
+      location    => 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
+      release     => "${::lsbdistcodename}-updates/${openstack_version}",
+      repos       => 'main',
+      include_src => false,
     }
   }
 }
