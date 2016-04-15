@@ -2,8 +2,8 @@ class openstack::repo {
 
   $openstack_version = hiera('openstack_version')
 
-  # Icehouse is native to Trusty
-  if $openstack_version != 'icehouse' {
+  # Mitaka is native to Xenial
+  if $openstack_version != 'mitaka' {
 
     if $::http_proxy and $::rfc1918_gateway == 'true' {
       $key_options = "http-proxy=${::http_proxy}"
