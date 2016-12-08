@@ -26,7 +26,6 @@ class openstack::repo {
       location    => 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
       release     => "${::lsbdistcodename}-updates/${openstack_version}",
       repos       => 'main',
-      include_src => false,
     }
   }
 }
