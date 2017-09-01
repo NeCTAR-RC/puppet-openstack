@@ -4,7 +4,7 @@ class openstack::repo {
   $openstack_version = hiera('openstack_version')
 
   $supported = ['trusty-juno', 'trusty-kilo', 'trusty-liberty', 'trusty-mitaka',
-                'xenial-newton', 'xenial-ocata']
+                'xenial-newton', 'xenial-ocata', 'xenial-pike']
 
   if "${::lsbdistcodename}-${openstack_version}" in $supported {
 
