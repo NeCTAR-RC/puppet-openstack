@@ -12,7 +12,7 @@ class openstack::repo {
       $key_options = "http-proxy=${::http_proxy}"
     }
     else {
-      $key_options = false
+      $key_options = undef
     }
 
     apt::key { 'cloud-archive':
@@ -26,6 +26,12 @@ class openstack::repo {
       location    => 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
       release     => "${::lsbdistcodename}-updates/${openstack_version}",
       repos       => 'main',
+    }
+    apt::source { "cloudarchive-${openstack_version}":
+      location    => 'http://ubuntu-cloud.archive.canonical.com/ubuntu',
+      release     => "${::lsbdistcodename}-updates/${openstack_version}",
+      repos       => 'main',
+      include     => {'src' => true, 'deb' => false},
     }
   }
 }
