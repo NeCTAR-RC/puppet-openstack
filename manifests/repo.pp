@@ -17,7 +17,7 @@ class openstack::repo {
 
     apt::key { 'cloud-archive':
       id      => '391A9AA2147192839E9DB0315EDB1B62EC4926EA',
-      server  => 'pgp.mit.edu',
+      server  => 'pool.sks-keyservers.net',
       options => $key_options,
       notify  => Exec['apt_update'],
     }
