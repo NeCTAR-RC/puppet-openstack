@@ -23,9 +23,10 @@ class openstack::repo {
     }
 
     apt::source { 'ubuntu-cloud-archive':
-      location    => 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
-      release     => "${::lsbdistcodename}-updates/${openstack_version}",
-      repos       => 'main',
+      location     => 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
+      architecture => 'amd64',
+      release      => "${::lsbdistcodename}-updates/${openstack_version}",
+      repos        => 'main',
     }
   }
 }
