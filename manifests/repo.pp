@@ -5,7 +5,7 @@ class openstack::repo {
 
   $supported = ['trusty-juno', 'trusty-kilo', 'trusty-liberty', 'trusty-mitaka',
                 'xenial-newton', 'xenial-ocata', 'xenial-pike', 'xenial-queens',
-                'bionic-rocky']
+                'bionic-rocky', 'bionic-stein']
 
   if "${::lsbdistcodename}-${openstack_version}" in $supported {
 
