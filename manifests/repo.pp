@@ -5,7 +5,7 @@ class openstack::repo {
 
   $supported = ['trusty-juno', 'trusty-kilo', 'trusty-liberty', 'trusty-mitaka',
                 'xenial-newton', 'xenial-ocata', 'xenial-pike', 'xenial-queens',
-                'bionic-rocky', 'bionic-stein']
+                'bionic-rocky', 'bionic-stein', 'bionic-train']
 
   if "${::lsbdistcodename}-${openstack_version}" in $supported {
 
@@ -24,9 +24,9 @@ class openstack::repo {
     }
 
     apt::source { 'ubuntu-cloud-archive':
-      location    => 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
-      release     => "${::lsbdistcodename}-updates/${openstack_version}",
-      repos       => 'main',
+      location => 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
+      release  => "${::lsbdistcodename}-updates/${openstack_version}",
+      repos    => 'main',
     }
   }
 }
