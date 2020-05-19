@@ -1,5 +1,7 @@
 # Installs the opentack ubuntu cloud archive
-class openstack::repo {
+class openstack::repo(
+  $mirror_url = 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
+) {
 
   $openstack_version = hiera('openstack_version')
 
@@ -24,7 +26,7 @@ class openstack::repo {
     }
 
     apt::source { 'ubuntu-cloud-archive':
-      location => 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
+      location => $mirror_url,
       release  => "${::lsbdistcodename}-updates/${openstack_version}",
       repos    => 'main',
     }
