@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4e8e66ee_def56615",
+        "filename": "manifests/oslo_messaging.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-07-16T01:40:17Z",
+      "side": 1,
+      "message": "this class can be removed",
+      "range": {
+        "startLine": 3,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "089517ec8d91b7ded98ab2adb4143e2d8e741f6a",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81cb0486_0b7cf0cb",
         "filename": "manifests/repo/redhat.pp",
         "patchSetId": 1
