@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81cb0486_0b7cf0cb",
+        "filename": "manifests/repo/redhat.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000113
+      },
+      "writtenOn": "2020-07-16T01:38:02Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be replaced with openstack_version?",
+      "range": {
+        "startLine": 13,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "089517ec8d91b7ded98ab2adb4143e2d8e741f6a",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": true
+    }
+  ]
+}
