@@ -8,18 +8,17 @@ class openstack::repo::redhat {
     '8': {
       case $openstack_version {
         'train': {
-          # rdo-release for RHEL8 installs the ussuri repo, we need train repo
-          # for neutron-linuxbridge-agent.
-          yumrepo { 'openstack-train':
-            name     => 'rdo-release-train',
-            descr    => 'OpenStack Train Repository',
-            baseurl  => 'http://mirror.centos.org/centos/$releasever/cloud/$basearch/openstack-train/',
-            gpgcheck => 1,
-            enabled  => 1,
-            gpgkey   => 'https://www.centos.org/keys/RPM-GPG-KEY-CentOS-SIG-Cloud',
+          package { 'rdo-release':
+            source => 'https://repos.fedorapeople.org/repos/openstack/openstack-train/rdo-release-train-4.el8.noarch.rpm',
+          }
+        }
+        'ussuri': {
+          package { 'rdo-release':
+            source => 'https://repos.fedorapeople.org/repos/openstack/openstack-ussuri/rdo-release-ussuri-3.el8.noarch.rpm',
           }
         }
         default: {
+          # the default rdo-release package for RHEL8 installs the victoria repo
           package { 'rdo-release':
             source => 'https://www.rdoproject.org/repos/rdo-release.el8.rpm',
           }
