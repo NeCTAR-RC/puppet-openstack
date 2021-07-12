@@ -21,7 +21,7 @@ class openstack::repo::ubuntu(
 
     apt::key { 'cloud-archive':
       id      => '391A9AA2147192839E9DB0315EDB1B62EC4926EA',
-      server  => 'pool.sks-keyservers.net',
+      server  => 'keyserver.ubuntu.com',
       options => $key_options,
       notify  => Exec['apt_update'],
     }
