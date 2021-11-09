@@ -8,7 +8,7 @@ class openstack::repo::ubuntu(
   $supported = ['trusty-juno', 'trusty-kilo', 'trusty-liberty', 'trusty-mitaka',
                 'xenial-newton', 'xenial-ocata', 'xenial-pike', 'xenial-queens',
                 'bionic-rocky', 'bionic-stein', 'bionic-train', 'bionic-ussuri',
-                'focal-victoria']
+                'focal-victoria', 'focal-wallaby', 'focal-xena']
 
   if "${::lsbdistcodename}-${openstack_version}" in $supported {
 
