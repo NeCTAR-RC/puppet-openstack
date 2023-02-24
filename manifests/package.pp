@@ -1,3 +1,0 @@
-class openstack::package {
-
-}
