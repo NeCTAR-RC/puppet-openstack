@@ -40,6 +40,6 @@ class openstack::repo::ubuntu(
 
     *$native_supported: {}
 
-    default: {fail("${::lsbdistcodename}-${openstack_version} is not supported")}
+    default: {fail("${openstack_version} is not supported on ${::lsbdistcodename}")}
   }
 }
