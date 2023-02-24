@@ -16,7 +16,7 @@ class openstack::repo::ubuntu(
   $native_supported = ['bionic-queens', 'focal-ussuri', 'jammy-yoga']
 
 
-  case "${::lsbdistcodename}-${openstack_version}" {
+  case "${facts['os']['distro']['codename']}-${openstack_version}" {
 
     *$supported: {
       if defined('$::http_proxy') and str2bool($::rfc1918_gateway) {
@@ -35,19 +35,19 @@ class openstack::repo::ubuntu(
 
       apt::source { 'ubuntu-cloud-archive':
         location => $mirror_url,
-        release  => "${::lsbdistcodename}-updates/${openstack_version}",
+        release  => "${facts['os']['distro']['codename']}-updates/${openstack_version}",
         repos    => 'main',
       }
     }
 
     *$native_supported: {}
 
-    default: {fail("${openstack_version} is not supported on ${::lsbdistcodename}")}
+    default: {fail("${openstack_version} is not supported on ${facts['os']['distro']['codename']}")}
   }
 
   apt::source { "nectar-${openstack_version}":
     location => $mirror_url,
-    release  => "${::lsbdistcodename}-${openstack_version}",
+    release  => "${facts['os']['distro']['codename']}-${openstack_version}",
     repos    => 'main',
     require  => Apt::Key['nectar'],
   }
