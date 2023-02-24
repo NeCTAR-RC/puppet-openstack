@@ -3,6 +3,8 @@ class openstack::repo::ubuntu(
   $mirror_url = 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
 ) {
 
+  include nectar::repo::ubuntu
+
   $openstack_version = hiera('openstack_version')
 
   $supported = ['trusty-juno', 'trusty-kilo', 'trusty-liberty', 'trusty-mitaka',
@@ -42,4 +44,16 @@ class openstack::repo::ubuntu(
 
     default: {fail("${openstack_version} is not supported on ${::lsbdistcodename}")}
   }
+
+  apt::source { "nectar-${openstack_version}":
+    location => $mirror_url,
+    release  => "${::lsbdistcodename}-${openstack_version}",
+    repos    => 'main',
+    require  => Apt::Key['nectar'],
+  }
+
+  Apt::Source <| title == "nectar-${openstack_version}" |>
+  -> Class['apt::update']
+  -> Package <| tag == 'openstack' or tag == 'nectar' |>
+
 }
