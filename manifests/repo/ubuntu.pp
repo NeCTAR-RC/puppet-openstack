@@ -46,7 +46,7 @@ class openstack::repo::ubuntu(
   }
 
   apt::source { "nectar-${openstack_version}":
-    location => $mirror_url,
+    location => $nectar::repo::ubuntu::mirror_url,
     release  => "${facts['os']['distro']['codename']}-${openstack_version}",
     repos    => 'main',
     require  => Apt::Key['nectar'],
