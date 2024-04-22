@@ -7,6 +7,14 @@ class openstack::repo::ubuntu(
 
   $openstack_version = hiera('openstack_version')
 
+  # Ubuntu uses the codename, not version for repos so convert
+  case $openstack_version {
+    '2023.1': { $openstack_version_real = 'antelope' }
+    '2023.2': { $openstack_version_real = 'bobcat' }
+    '2024.1': { $openstack_version_real = 'caracal' }
+    default: { $openstack_version_real = $openstack_version }
+  }
+
   $supported = ['bionic-rocky', 'bionic-stein', 'bionic-train', 'bionic-ussuri',
                 'focal-victoria', 'focal-wallaby', 'focal-xena', 'focal-yoga',
                 'jammy-zed', 'jammy-antelope', 'jammy-bobcat', 'jammy-caracal']
@@ -14,7 +22,7 @@ class openstack::repo::ubuntu(
   $native_supported = ['bionic-queens', 'focal-ussuri', 'jammy-yoga']
 
 
-  case "${facts['os']['distro']['codename']}-${openstack_version}" {
+  case "${facts['os']['distro']['codename']}-${openstack_version_real}" {
 
     *$supported: {
       if defined('$::http_proxy') and str2bool($::rfc1918_gateway) {
@@ -33,24 +41,24 @@ class openstack::repo::ubuntu(
 
       apt::source { 'ubuntu-cloud-archive':
         location => $mirror_url,
-        release  => "${facts['os']['distro']['codename']}-updates/${openstack_version}",
+        release  => "${facts['os']['distro']['codename']}-updates/${openstack_version_real}",
         repos    => 'main',
       }
     }
 
     *$native_supported: {}
 
-    default: {fail("${openstack_version} is not supported on ${facts['os']['distro']['codename']}")}
+    default: {fail("${openstack_version_real} is not supported on ${facts['os']['distro']['codename']}")}
   }
 
-  apt::source { "nectar-${openstack_version}":
+  apt::source { "nectar-${openstack_version_real}":
     location => $nectar::repo::ubuntu::mirror_url,
-    release  => "${facts['os']['distro']['codename']}-${openstack_version}",
+    release  => "${facts['os']['distro']['codename']}-${openstack_version_real}",
     repos    => 'main',
     require  => Apt::Key['nectar'],
   }
 
-  Apt::Source <| title == "nectar-${openstack_version}" |>
+  Apt::Source <| title == "nectar-${openstack_version_real}" |>
   -> Class['apt::update']
   -> Package <| tag == 'openstack' or tag == 'nectar' |>
 
