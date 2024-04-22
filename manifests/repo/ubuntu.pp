@@ -7,11 +7,9 @@ class openstack::repo::ubuntu(
 
   $openstack_version = hiera('openstack_version')
 
-  $supported = ['trusty-juno', 'trusty-kilo', 'trusty-liberty', 'trusty-mitaka',
-                'xenial-newton', 'xenial-ocata', 'xenial-pike', 'xenial-queens',
-                'bionic-rocky', 'bionic-stein', 'bionic-train', 'bionic-ussuri',
+  $supported = ['bionic-rocky', 'bionic-stein', 'bionic-train', 'bionic-ussuri',
                 'focal-victoria', 'focal-wallaby', 'focal-xena', 'focal-yoga',
-                'jammy-zed',]
+                'jammy-zed', 'jammy-antelope', 'jammy-bobcat', 'jammy-caracal']
 
   $native_supported = ['bionic-queens', 'focal-ussuri', 'jammy-yoga']
 
