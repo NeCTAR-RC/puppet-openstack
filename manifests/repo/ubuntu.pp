@@ -25,17 +25,10 @@ class openstack::repo::ubuntu(
   case "${facts['os']['distro']['codename']}-${openstack_version_real}" {
 
     *$supported: {
-      if defined('$::http_proxy') and str2bool($::rfc1918_gateway) {
-        $key_options = "http-proxy=${::http_proxy}"
-      }
-      else {
-        $key_options = undef
-      }
 
       apt::key { 'cloud-archive':
         id      => '391A9AA2147192839E9DB0315EDB1B62EC4926EA',
         server  => 'keyserver.ubuntu.com',
-        options => $key_options,
         notify  => Exec['apt_update'],
       }
 
