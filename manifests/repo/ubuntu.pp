@@ -1,6 +1,6 @@
 # Installs the opentack ubuntu cloud archive
 class openstack::repo::ubuntu(
-  $mirror_url = 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
+  String $mirror_url = 'http://mirrors.rc.nectar.org.au/ubuntu-cloud/ubuntu',
 ) {
 
   include nectar::repo::ubuntu
@@ -28,8 +28,7 @@ class openstack::repo::ubuntu(
 
       apt::key { 'cloud-archive':
         id     => '391A9AA2147192839E9DB0315EDB1B62EC4926EA',
-        server => 'keyserver.ubuntu.com',
-        notify => Exec['apt_update'],
+        source => 'puppet:///modules/openstack/cloud-archive-signing-key.asc',
       }
 
       apt::source { 'ubuntu-cloud-archive':
