@@ -28,7 +28,7 @@ class openstack::repo::ubuntu(
 
       apt::key { 'cloud-archive':
         id     => '391A9AA2147192839E9DB0315EDB1B62EC4926EA',
-        source => 'puppet:///modules/openstack/cloud-archive-signing-key.asc',
+        source => 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x391a9aa2147192839e9db0315edb1b62ec4926ea',
       }
 
       apt::source { 'ubuntu-cloud-archive':
