@@ -5,14 +5,24 @@ class openstack::repo::ubuntu(
 
   include nectar::repo::ubuntu
 
-  $openstack_version = hiera('openstack_version')
+  $openstack_version = lookup('openstack_version', Variant[String, Float])
 
   # Ubuntu uses the codename, not version for repos so convert
   case $openstack_version {
     '2023.1': { $openstack_version_real = 'antelope' }
     '2023.2': { $openstack_version_real = 'bobcat' }
     '2024.1': { $openstack_version_real = 'caracal' }
+    2023.1: { $openstack_version_real = 'antelope' }
+    2023.2: { $openstack_version_real = 'bobcat' }
+    2024.1: { $openstack_version_real = 'caracal' }
     default: { $openstack_version_real = $openstack_version }
+  }
+
+  if type($openstack_version) == Type[Float] {
+    notify{'openstack::repo::ubuntu::openstack_version':
+      message => 'openstack_version should be type String, not type Float, this will break in future release',
+    }
+    warning('openstack_version is type Float, should be type String')
   }
 
   $supported = ['bionic-rocky', 'bionic-stein', 'bionic-train', 'bionic-ussuri',
