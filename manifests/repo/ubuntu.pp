@@ -25,11 +25,10 @@ class openstack::repo::ubuntu(
     warning('openstack_version is type Float, should be type String')
   }
 
-  $supported = ['bionic-rocky', 'bionic-stein', 'bionic-train', 'bionic-ussuri',
-                'focal-victoria', 'focal-wallaby', 'focal-xena', 'focal-yoga',
+  $supported = ['focal-victoria', 'focal-wallaby', 'focal-xena', 'focal-yoga',
                 'jammy-zed', 'jammy-antelope', 'jammy-bobcat', 'jammy-caracal']
 
-  $native_supported = ['bionic-queens', 'focal-ussuri', 'jammy-yoga']
+  $native_supported = ['focal-ussuri', 'jammy-yoga']
 
 
   case "${facts['os']['distro']['codename']}-${openstack_version_real}" {
