@@ -18,7 +18,7 @@ class openstack::repo::ubuntu(
     default: { $openstack_version_real = $openstack_version }
   }
 
-  if type($openstack_version) != Type[String] {
+  if $openstack_version =~ String {
     notify{'openstack::repo::ubuntu::openstack_version':
       message => 'openstack_version should be type String, not type Float, this will break in future release',
     }
