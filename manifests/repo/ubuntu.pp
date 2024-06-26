@@ -49,7 +49,9 @@ class openstack::repo::ubuntu(
 
     *$native_supported: {}
 
-    default: {fail("${openstack_version_real} is not supported on ${facts['os']['distro']['codename']}")}
+    default: {
+      warning("${openstack_version_real} is not supported on ${facts['os']['distro']['codename']}")
+    }
   }
 
   apt::source { "nectar-${openstack_version_real}":
