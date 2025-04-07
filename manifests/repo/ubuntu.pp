@@ -58,7 +58,7 @@ class openstack::repo::ubuntu(
     location => $nectar::repo::ubuntu::mirror_url,
     release  => "${facts['os']['distro']['codename']}-${openstack_version_real}",
     repos    => 'main',
-    require  => Apt::Key['nectar'],
+    keyring  => '/etc/apt/keyrings/nectar.gpg',
   }
 
   Apt::Source <| title == "nectar-${openstack_version_real}" |>
