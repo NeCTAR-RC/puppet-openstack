@@ -43,7 +43,6 @@ class openstack::repo::ubuntu(
         location => $mirror_url,
         release  => "${facts['os']['distro']['codename']}-updates/${openstack_version_real}",
         repos    => 'main',
-        require  => Package['ubuntu-cloud-keyring'],
       }
     }
 
