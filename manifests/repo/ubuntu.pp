@@ -5,6 +5,10 @@ class openstack::repo::ubuntu(
 
   include nectar::repo::ubuntu
 
+  package {'ubuntu-cloud-keyring':
+    ensure => 'installed',
+  }
+
   $openstack_version = lookup('openstack_version', Variant[String, Float])
 
   # Ubuntu uses the codename, not version for repos so convert
@@ -35,15 +39,11 @@ class openstack::repo::ubuntu(
 
     *$supported: {
 
-      apt::key { 'cloud-archive':
-        id     => '391A9AA2147192839E9DB0315EDB1B62EC4926EA',
-        source => 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x391a9aa2147192839e9db0315edb1b62ec4926ea',
-      }
-
       apt::source { 'ubuntu-cloud-archive':
         location => $mirror_url,
         release  => "${facts['os']['distro']['codename']}-updates/${openstack_version_real}",
         repos    => 'main',
+        require  => Package['ubuntu-cloud-keyring'],
       }
     }
 
