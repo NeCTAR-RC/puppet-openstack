@@ -11,15 +11,15 @@ class openstack::repo::ubuntu(
 
   $openstack_version = lookup('openstack_version', Variant[String, Float])
 
-  # Ubuntu uses the codename, not version for repos so convert
+  # Ubuntu uses the codename for cloud archive, not version for repos so convert
   case $openstack_version {
-    '2023.1': { $openstack_version_real = 'antelope' }
-    '2023.2': { $openstack_version_real = 'bobcat' }
-    '2024.1': { $openstack_version_real = 'caracal' }
-    2023.1: { $openstack_version_real = 'antelope' }
-    2023.2: { $openstack_version_real = 'bobcat' }
-    2024.1: { $openstack_version_real = 'caracal' }
-    default: { $openstack_version_real = $openstack_version }
+    '2023.1': { $openstack_codename = 'antelope' }
+    '2023.2': { $openstack_codename = 'bobcat' }
+    '2024.1': { $openstack_codename = 'caracal' }
+    2023.1: { $openstack_codename = 'antelope' }
+    2023.2: { $openstack_codename = 'bobcat' }
+    2024.1: { $openstack_codename = 'caracal' }
+    default: { $openstack_codename = $openstack_version }
   }
 
   if $openstack_version !~ String {
@@ -30,18 +30,18 @@ class openstack::repo::ubuntu(
   }
 
   $supported = ['focal-victoria', 'focal-wallaby', 'focal-xena', 'focal-yoga',
-                'jammy-zed', 'jammy-antelope', 'jammy-bobcat', 'jammy-caracal']
+                'jammy-zed', 'jammy-2023.1', 'jammy-2023.2', 'jammy-2024.1']
 
   $native_supported = ['focal-ussuri', 'jammy-yoga']
 
 
-  case "${facts['os']['distro']['codename']}-${openstack_version_real}" {
+  case "${facts['os']['distro']['codename']}-${openstack_version}" {
 
     *$supported: {
 
       apt::source { 'ubuntu-cloud-archive':
         location => $mirror_url,
-        release  => "${facts['os']['distro']['codename']}-updates/${openstack_version_real}",
+        release  => "${facts['os']['distro']['codename']}-updates/${openstack_codename}",
         repos    => 'main',
       }
     }
@@ -49,18 +49,18 @@ class openstack::repo::ubuntu(
     *$native_supported: {}
 
     default: {
-      warning("${openstack_version_real} is not supported on ${facts['os']['distro']['codename']}")
+      warning("${openstack_version} is not supported on ${facts['os']['distro']['codename']}")
     }
   }
 
-  apt::source { "nectar-${openstack_version_real}":
+  apt::source { "nectar-${openstack_version}":
     location => $nectar::repo::ubuntu::mirror_url,
-    release  => "${facts['os']['distro']['codename']}-${openstack_version_real}",
+    release  => "${facts['os']['distro']['codename']}-${openstack_version}",
     repos    => 'main',
     keyring  => '/etc/apt/keyrings/nectar.gpg',
   }
 
-  Apt::Source <| title == "nectar-${openstack_version_real}" |>
+  Apt::Source <| title == "nectar-${openstack_version}" |>
   -> Class['apt::update']
   -> Package <| tag == 'openstack' or tag == 'nectar' |>
 
