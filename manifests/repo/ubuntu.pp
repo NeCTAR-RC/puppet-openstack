@@ -19,6 +19,11 @@ class openstack::repo::ubuntu(
     2023.1: { $openstack_codename = 'antelope' }
     2023.2: { $openstack_codename = 'bobcat' }
     2024.1: { $openstack_codename = 'caracal' }
+    2024.2: { $openstack_codename = 'dalmation' }
+    2025.1: { $openstack_codename = 'epoxy' }
+    2025.2: { $openstack_codename = 'flamingo' }
+    2026.1: { $openstack_codename = 'gazpacho' }
+    2026.2: { $openstack_codename = 'hibuscus' }
     default: { $openstack_codename = $openstack_version }
   }
 
@@ -30,7 +35,8 @@ class openstack::repo::ubuntu(
   }
 
   $supported = ['focal-victoria', 'focal-wallaby', 'focal-xena', 'focal-yoga',
-                'jammy-zed', 'jammy-2023.1', 'jammy-2023.2', 'jammy-2024.1']
+                'jammy-zed', 'jammy-2023.1', 'jammy-2023.2', 'jammy-2024.1',
+                'noble-2024.2', 'noble-2025.1', 'noble-2025.2', 'noble-2026.1']
 
   $native_supported = ['focal-ussuri', 'jammy-yoga']
 
