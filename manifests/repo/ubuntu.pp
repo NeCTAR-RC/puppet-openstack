@@ -23,7 +23,7 @@ class openstack::repo::ubuntu(
     2025.1: { $openstack_codename = 'epoxy' }
     2025.2: { $openstack_codename = 'flamingo' }
     2026.1: { $openstack_codename = 'gazpacho' }
-    2026.2: { $openstack_codename = 'hibuscus' }
+    2026.2: { $openstack_codename = 'hibiscus' }
     default: { $openstack_codename = $openstack_version }
   }
 
