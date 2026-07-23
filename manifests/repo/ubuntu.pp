@@ -16,14 +16,13 @@ class openstack::repo::ubuntu(
     '2023.1': { $openstack_codename = 'antelope' }
     '2023.2': { $openstack_codename = 'bobcat' }
     '2024.1': { $openstack_codename = 'caracal' }
+    '2025.1': { $openstack_codename = 'epoxy' }
+    '2026.1': { $openstack_codename = 'gazpacho' }
     2023.1: { $openstack_codename = 'antelope' }
     2023.2: { $openstack_codename = 'bobcat' }
     2024.1: { $openstack_codename = 'caracal' }
     2024.2: { $openstack_codename = 'dalmation' }
     2025.1: { $openstack_codename = 'epoxy' }
-    2025.2: { $openstack_codename = 'flamingo' }
-    2026.1: { $openstack_codename = 'gazpacho' }
-    2026.2: { $openstack_codename = 'hibiscus' }
     default: { $openstack_codename = $openstack_version }
   }
 
